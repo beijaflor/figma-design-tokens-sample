@@ -8,7 +8,7 @@
   },
   "private": true,
   "scripts": {
-    "build": "style-dictionary build"
+    "build": "style-dictionary build --verbose"
   },
   "devDependencies": {
     "style-dictionary": "^4.3.2"

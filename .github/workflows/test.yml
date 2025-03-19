@@ -35,15 +35,9 @@ jobs:
       # We now run npm i to install all dependencies and run the "transfrom" script that is defined in the package.json (change this if you need to)
       - name: Transform design tokens
         run: "npm ci && npm run build"
-      - name: Commit changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add build/css/_variables.css
-          git commit -m "{{ github.event.client_payload.commitMessage || 'Tokens updated' }}"
       # We now create a pull request
       - name: Create PR
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v7
         with:
           commit-message: ${{ github.event.client_payload.commitMessage || 'Tokens updated' }}
           title: "Design tokens updated"
